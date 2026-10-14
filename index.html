@@ -863,6 +863,39 @@ function eKarsitTakipRenderTable(host,data,onRowClick,pageDashboardFilter=null){
   titleRow.appendChild(el('h3',{},'e-Karşıt Takip Kayıtları'));
   card.appendChild(titleRow);
 
+  // Bildirim özeti yalnızca kayıt verisi okunup tablo oluşturulurken gösterilir.
+  const notificationDetails=el('details',{style:'margin-top:10px;border:1px solid var(--border);border-radius:9px;background:var(--panel);'});
+  const notificationSummary=el('summary',{style:'cursor:pointer;list-style-position:inside;padding:11px 13px;font-weight:700;color:var(--primary-dark);'},'Bildirimler ve Durum Özeti');
+  notificationDetails.appendChild(notificationSummary);
+  const notificationGrid=el('div',{style:'display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:9px;padding:0 12px 12px;'});
+  const notificationNorm=r=>eKarsitTakipNorm(r?.['Durum']);
+  const todayDay=eKarsitTakipBugunGun();
+  const notificationCounts={
+    total:data.records.length,
+    waiting:data.records.filter(r=>notificationNorm(r)==='cevapbekliyor').length,
+    passiveRequest:data.records.filter(r=>{const s=notificationNorm(r);return s.includes('pasif')&&s.includes('talep')&&s.includes('onaybekliyor');}).length,
+    cancelRequest:data.records.filter(r=>{const s=notificationNorm(r);return s.includes('iptal')&&s.includes('talep')&&s.includes('onaybekliyor');}).length,
+    passive:data.records.filter(r=>eKarsitTakipNorm(r['Pasiflik Durumu'])==='evet'||notificationNorm(r).includes('pasifecekilmis')).length,
+    overdue:data.records.filter(r=>{const d=eKarsitTakipTarihGun(r['Son Tarih']);return notificationNorm(r)==='cevapbekliyor'&&d!==null&&d<todayDay;}).length,
+    dueSoon:data.records.filter(r=>{const d=eKarsitTakipTarihGun(r['Son Tarih']);return notificationNorm(r)==='cevapbekliyor'&&d!==null&&d>=todayDay&&d<=todayDay+5;}).length
+  };
+  [
+    ['Toplam Karşıt',notificationCounts.total,'#155e75'],
+    ['Cevap Bekliyor',notificationCounts.waiting,'#b7791f'],
+    ['Gönderilen Pasif Talebi Onay Bekliyor',notificationCounts.passiveRequest,'#7c3aed'],
+    ['Gönderilen İptal Talebi Onay Bekliyor',notificationCounts.cancelRequest,'#7c3aed'],
+    ['Pasife Çekilmiş',notificationCounts.passive,'#64748b'],
+    ['Son Teslim Tarihi Geçmiş',notificationCounts.overdue,'#c0392b'],
+    ['Son Teslim Tarihi 5 Gün İçinde',notificationCounts.dueSoon,'#d97706']
+  ].forEach(([label,count,color])=>{
+    const tile=el('div',{style:'min-width:0;padding:11px 12px;border:1px solid var(--border);border-left:4px solid '+color+';border-radius:8px;background:var(--bg);'});
+    tile.appendChild(el('div',{style:'font-size:12px;line-height:1.4;color:var(--muted);min-height:34px;'},label));
+    tile.appendChild(el('div',{style:'font-size:24px;font-weight:750;line-height:1.2;color:'+color+';margin-top:5px;font-variant-numeric:tabular-nums;'},String(count)));
+    notificationGrid.appendChild(tile);
+  });
+  notificationDetails.appendChild(notificationGrid);
+  card.appendChild(notificationDetails);
+
   const controlsDetails=el('details',{style:'margin-top:10px;'});
   const controlsSummary=el('summary',{style:'cursor:pointer;font-weight:600;padding:10px 12px;border:1px solid var(--border);border-radius:8px;background:var(--surface);'},'Filtreleme ve Tablo İşlemleri');
   const controlsPanel=el('div',{style:'padding-top:10px;'});
