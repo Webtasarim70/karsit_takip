@@ -1216,16 +1216,16 @@ async function renderEKarsitTakipPage(){
   const helpBody=el('div',{class:'hint',style:'margin-top:8px;'});
   const steps=[
     '1. Chrome’da Uzantılar → Uzantıları Yönet → Paketlenmemiş öge yükle seçeneğine tıklayın.',
-    '2. GitHub deposundaki extension/gib-ekarsit-sync klasörünü seçin.',
+    '2. GitHub deposundaki extension klasörünü indirin ve bu klasörü seçin.',
     '3. GİB e-Karşıt sayfasında hesabınızla giriş yapın.',
-    '4. Bu uygulamada Kullanıcı bölümünden çalışma klasörünüzü seçin.',
-    '5. GİB e-Karşıt sayfasında eklentinin “e-Karşıt Takip’e Aktar” butonuna basın.',
+    '4. Bu uygulamaya geri dönün ve GİB Senkronizasyonu ve Excel bölümünü açın.',
+    '5. “GİB’deki Karşıt İncelemeleri Tabloya Aktar” butonuna basın.',
     '6. Eklenti GİB kayıtlarının tüm sayfalarını otomatik olarak alır ve bu uygulamadaki takip kayıtlarına aktarır.',
     '7. Kayıtlar İşlem ID üzerinden birleştirilir. Yeni kayıtlar eklenir, mevcut kayıtlar güncellenir ve Not alanları korunur.',
     'Başarılı aktarım sonunda alınan, eklenen ve güncellenen kayıt sayısı bu sayfadaki tabloda görünür.'
   ];
   steps.forEach(x=>helpBody.appendChild(el('div',{style:'margin:4px 0;'},x)));
-  const repoLink=el('a',{href:'https://github.com/Webtasarim70/ekarsit/tree/main/extension',target:'_blank',rel:'noopener noreferrer',style:'display:inline-block;margin-top:6px;font-weight:600;'},'GitHub → e-Karşıt Chrome eklentisi');
+  const repoLink=el('a',{href:'https://github.com/Webtasarim70/karsit_takip/tree/main/extension',target:'_blank',rel:'noopener noreferrer',style:'display:inline-block;margin-top:6px;font-weight:600;'},'GitHub → e-Karşıt Chrome eklentisi');
   helpBody.appendChild(repoLink);help.appendChild(helpBody);card.appendChild(help);
   const input=el('input',{type:'file',accept:'.xlsx,.xlsm',style:'display:none;'});
   const syncBtn=el('button',{class:'btn btn-primary',type:'button',style:'margin-left:8px;',onclick:()=>{
