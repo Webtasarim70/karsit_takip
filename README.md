@@ -13,5 +13,10 @@ Chrome/Edge'de `extension/` klasörünü ayrı bir eklenti olarak yükleyin: Ekl
 
 Eklenti, GİB oturumunu tarayıcıda kullanır. GİB kullanıcı adı, parola, çerez veya erişim belirteci bu uygulama tarafından kaydedilmez.
 
-## Veri eşleştirme
-Senkronizasyon `İşlem ID` alanına göre yeni kayıt ekler ve mevcut kayıtları günceller; mevcut kaydın `Not` alanı korunur.
+## Veri eşleştirme ve değişiklik geçmişi
+- GİB kayıtları `İşlem ID` alanına göre eşleştirilir.
+- Yeni kayıtlar eklenir; mevcut kayıtlarda yalnızca değişen GİB alanları güncellenir.
+- `Son Düzenleme Tarihi` karşılaştırmada kullanılır; aynı tarih olsa bile alanlar ve özellikle `Durum` ayrıca karşılaştırılır.
+- Her alan değişikliği eski değer, yeni değer, GİB düzenleme tarihi ve tespit zamanı ile değişiklik geçmişine kaydedilir.
+- Değişiklik geçmişi kayıtlarla aynı tarayıcı deposunda saklanır. Kullanıcı tarafından girilen `Not` alanı senkronizasyonda korunur.
+- Senkronizasyon sonunda yeni, değişen, değişmeyen kayıt ve kaydedilen alan değişikliği sayıları gösterilir.
