@@ -20,3 +20,4 @@ Eklenti, GİB oturumunu tarayıcıda kullanır. GİB kullanıcı adı, parola, �
 - Her alan değişikliği eski değer, yeni değer, GİB düzenleme tarihi ve tespit zamanı ile değişiklik geçmişine kaydedilir.
 - Değişiklik geçmişi kayıtlarla aynı tarayıcı deposunda saklanır. Kullanıcı tarafından girilen `Not` alanı senkronizasyonda korunur.
 - Senkronizasyon sonunda yeni, değişen, değişmeyen kayıt ve kaydedilen alan değişikliği sayıları gösterilir.
+- Excel yedeği ayrı bir `Değişiklik Geçmişi` sayfası da içerir; bu sayfa içe aktarıldığında geçmiş kayıtlar birleştirilerek geri yüklenir.
