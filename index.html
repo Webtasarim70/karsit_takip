@@ -618,7 +618,7 @@ body.redesign-test{--bg:#f7f4ee;--paper:#fffdf9;--line:#e8dfd1;--ink:#29251f;--m
 /* Material Turkuaz — ek tema; mevcut görünüm varsayılan kalır */
 
 body.theme-material{--bg:#f2f2f2;--paper:#fff;--line:#e0e0e0;--ink:#000;--muted:#808492;--accent:#1987a4;--primary:#1987a4;--primary-dark:#222a41;--surface:#fff;--surface-muted:#f2f2f2;background:#f2f2f2;color:#000;font-family:'Poppins',Arial,sans-serif}
-body.theme-material .rd{width:calc(100% - 32px);max-width:1541px;margin:0 auto;background:#f2f2f2;font-family:'Poppins',Arial,sans-serif;gap:0}
+body.theme-material .rd{width:calc(100vw - 16px);max-width:none;margin:0 8px;background:#f2f2f2;font-family:'Poppins',Arial,sans-serif;gap:0;grid-template-columns:225px minmax(0,1fr)}body.theme-material .rd.has-selection{grid-template-columns:225px minmax(380px,440px) minmax(0,1fr)}
 body.theme-material .rd *{font-family:'Poppins',Arial,sans-serif;box-shadow:none!important}
 body.theme-material .rd-side{background:#fff;border-right:1px solid #e0e0e0;padding:24px 16px;gap:16px}
 body.theme-material .rd-brand{border-bottom:1px solid #e0e0e0;padding:0 8px 16px}
@@ -679,9 +679,9 @@ body.theme-material .rd-detail-close:hover,body.theme-material .rd-page-btn:hove
 @media(max-width:900px){body.theme-material .rd{width:100%;max-width:none}body.theme-material .rd-side{padding:16px;gap:12px}body.theme-material .rd-detail{padding:22px 16px}}
 @media(max-width:599px){body.theme-material .rd-head{padding:18px 14px 12px}body.theme-material .rd-detail h1{font-size:25px}body.theme-material .rd-metrics{gap:8px}}
 @media(min-width:600px) and (max-width:899px){body.theme-material .rd-side{padding:18px}}
-@media(min-width:900px) and (max-width:1199px){body.theme-material .rd{grid-template-columns:210px minmax(0,1fr)}}
-@media(min-width:1200px) and (max-width:1535px){body.theme-material .rd{grid-template-columns:225px minmax(380px,440px) minmax(0,1fr)}}
-@media(min-width:1536px){body.theme-material .rd{grid-template-columns:225px minmax(380px,440px) minmax(0,1fr)}}
+@media(min-width:900px) and (max-width:1199px){body.theme-material .rd{grid-template-columns:210px minmax(0,1fr)}body.theme-material .rd.has-selection{grid-template-columns:210px minmax(280px,36%) minmax(0,1fr)}}
+@media(min-width:1200px) and (max-width:1535px){body.theme-material .rd{grid-template-columns:225px minmax(0,1fr)}body.theme-material .rd.has-selection{grid-template-columns:225px minmax(380px,440px) minmax(0,1fr)}}
+@media(min-width:1536px){body.theme-material .rd{grid-template-columns:225px minmax(0,1fr)}body.theme-material .rd.has-selection{grid-template-columns:225px minmax(380px,440px) minmax(0,1fr)}}
 </style></head><body><div id="standalone-shell"><header id="standalone-top"><h1>e-Karşıt Takip</h1><div class="theme-control"><label for="standalone-theme">Görünüm</label><select id="standalone-theme" name="standalone-theme"><option value="light">Açık</option><option value="dark">Koyu</option></select></div></header><div id="app"><div id="app-header"></div><div id="step-nav"></div><main id="step-panel"><div id="step-content"></div></main><div id="footer"><button id="btn-prev" type="button">Önceki</button><button id="btn-next" type="button">Sonraki</button><span id="footer-msg"></span></div></div></div>
 <script>/*! ExcelJS 19-10-2023 */
 
