@@ -1245,10 +1245,12 @@ async function eKarsitTakipApplyGibData(payload){
     updated++;
   });
 
-  // Kayıtlar ve denetim geçmişi aynı localStorage nesnesinde tek yazımla saklanır.
-  data.headers=[...EKARSIT_TAKIP_HEADERS];
-  data.changeHistory=history;
-  await eKarsitTakipWrite(data);
+  // Değişiklik yoksa tarayıcı deposuna hiç yazma; değişiklik varsa kayıtlar ve geçmiş tek yazımla saklanır.
+  if(added||updated){
+    data.headers=[...EKARSIT_TAKIP_HEADERS];
+    data.changeHistory=history;
+    await eKarsitTakipWrite(data);
+  }
   const fresh=await eKarsitTakipRead();
 
   if(typeof renderEKarsitTakipRedesign==='function' && currentPage==='e-karsit-takip'){
